@@ -1,0 +1,1 @@
+function parseQueryString(url) {var str = url.split("?")[1], items = str.split("&");var result = {};var arr;for (var i = 0; i < items.length; i++) {arr = items[i].split("=");result[arr[0]] = arr[1];}return result;}
