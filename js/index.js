@@ -1,0 +1,7 @@
+function shorten(){
+
+}
+
+function copy(){
+
+}
