@@ -107,10 +107,20 @@ app.get('/shorten', function (req, res) {
             generate();
         }else{
             //如果用户传入的shorturl不为空则检查是否重复
-
+            connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
+                if (err) {
+                    console.log(err.code);
+                    console.log(err.fatal);
+                    res.send("fail");
+                    return;
+                }
+                if (rows.length == 0) {
+                    inserturl();
+                }else{
+                    res.send("repeat");
+                }
+            });
         }
-
-
 
     });
 
@@ -123,7 +133,6 @@ app.get('/shorten', function (req, res) {
 
 /*find*/
 app.get('find', function (req, res) {
-
     var shorturl = req.query.shorturl;
     connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
         if (err) {
@@ -131,7 +140,11 @@ app.get('find', function (req, res) {
             console.log(err.fatal);
             res.send("fail");
         } else {
-            res.send(rows[0].longurl);
+            if (rows.length == 0) {
+                res.send("noresult");//查不到结果返回noresult
+            }else {
+                res.send(rows[0].longurl);//查询成功返回longurl
+            }
         }
     });
 
@@ -143,5 +156,5 @@ var server = app.listen(3000, function () {
     var host = server.address().address;
     var port = server.address().port;
 
-    console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Listening at http://%s:%s', host, port);
 });
