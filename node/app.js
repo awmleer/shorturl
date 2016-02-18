@@ -1,6 +1,8 @@
 var express = require('express');
 var mysql      = require('mysql');
+cors = require('cors');
 var app = express();
+app.use(cors());
 var connection = mysql.createConnection({
     host     : '121.42.209.162',
     user     : 'root',//TODO 貌似这里不能是root啊。。
@@ -43,7 +45,7 @@ app.get('/shorten', function (req, res) {
 
     var longurl = req.query.longurl;
     var shorturl=req.query.shorturl;
-    //console.log("longurl:"+longurl+"\nshorturl:"+shorturl);
+    console.log("longurl:"+longurl+"\nshorturl:"+shorturl);
 
     function inserturl(){
         //插入数据
@@ -75,13 +77,14 @@ app.get('/shorten', function (req, res) {
             res.send("fail");
             return;
         }
-        //如果存在则直接返回对应的shorturl，并且更新时间戳
+        //如果存在则直接返回对应的行，并且更新时间戳
         if (rows.length != 0) {
-            res.send(rows[0].shorturl);
+            res.send(rows[0]);
             //todo 更新时间戳
             return;
         }
 
+        //如果不存在再去判断shorturl是否为空
         if (shorturl == "") {
             //如果用户传入的shorturl为空则随机生成一个
             var string;
@@ -140,7 +143,6 @@ app.get('/_*', function (req, res) {
                 res.send("noresult");//查不到结果返回noresult
             }else {
                 res.redirect(rows[0].longurl);//查询成功则重定向
-                //res.send(rows[0].longurl);
             }
         }
     });

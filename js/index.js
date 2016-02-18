@@ -1,11 +1,15 @@
 function shorten(){
+    //调用shorten方法
     $.ajax({
         url: "http://localhost:3000/shorten",
         type: "get",
-        data: {long: $("#long").val()},
-        dataType: "json"
+        data: {
+            longurl: $("#long").val(),
+            shorturl:""
+        }
     }).done(function (data) {
-        $("#short").val(data.short);
+        console.log(data);
+        $("#short").text(data.shorturl);
         $("#index").hide();
         $("#result").show();
     }).fail(function () {
