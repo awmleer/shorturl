@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74d2f33f-1d8e-40c0-a59c-84129eee4f8b" name="Default" comment="API find">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/shorturl.iml" afterPath="$PROJECT_DIR$/.idea/shorturl.iml" />
+    <list default="true" id="74d2f33f-1d8e-40c0-a59c-84129eee4f8b" name="Default" comment="改掉了find的接口，直接用node做重定向">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/jump.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node/app.js" afterPath="$PROJECT_DIR$/node/app.js" />
     </list>
@@ -28,7 +28,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="7.6666665">
               <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
@@ -61,24 +61,17 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7699891">
-              <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.4709748">
+              <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
               <folding>
                 <element signature="e#317#397#0" expanded="false" />
+                <element signature="n#!!block;n#randomstr#0" expanded="false" />
+                <element signature="e#909#965#0" expanded="false" />
+                <element signature="e#1023#3681#0" expanded="false" />
                 <element signature="e#1460#1612#0" expanded="false" />
                 <element signature="e#2624#2816#0" expanded="false" />
                 <element signature="e#3317#3489#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jump.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jump.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.0">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -275,7 +268,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
@@ -442,7 +435,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455771763057</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="API find">
+      <created>1455798962078</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1455798962078</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -460,6 +459,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.176" sideWeight="0.49628845" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25386667" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26918977" sideWeight="0.5037116" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2768" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -469,7 +469,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17590618" sideWeight="0.5037116" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -498,7 +497,8 @@
     <MESSAGE value="随机生成字符串函数" />
     <MESSAGE value="改了一些结构" />
     <MESSAGE value="小bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="小bug" />
+    <MESSAGE value="API find" />
+    <option name="LAST_COMMIT_MESSAGE" value="API find" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -540,18 +540,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jump.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,18 +591,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jump.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,18 +642,13 @@
           <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jump.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -700,6 +685,9 @@
           <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />
@@ -729,6 +717,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />
@@ -758,6 +749,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />
@@ -861,22 +855,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jump.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -896,12 +874,23 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="7.6666665">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7699891">
-          <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.4709748">
+          <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
           <folding>
             <element signature="e#317#397#0" expanded="false" />
+            <element signature="n#!!block;n#randomstr#0" expanded="false" />
+            <element signature="e#909#965#0" expanded="false" />
+            <element signature="e#1023#3681#0" expanded="false" />
             <element signature="e#1460#1612#0" expanded="false" />
             <element signature="e#2624#2816#0" expanded="false" />
             <element signature="e#3317#3489#0" expanded="false" />

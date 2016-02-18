@@ -124,16 +124,12 @@ app.get('/shorten', function (req, res) {
 
     });
 
-
-
-
-    //connection.end();
 });
 
 
-/*find*/
-app.get('find', function (req, res) {
-    var shorturl = req.query.shorturl;
+/*下划线开头的进行解析并重定向*/
+app.get('/_*', function (req, res) {
+    var shorturl = req.path.substr(2);
     connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
         if (err) {
             console.log(err.code);
@@ -143,7 +139,8 @@ app.get('find', function (req, res) {
             if (rows.length == 0) {
                 res.send("noresult");//查不到结果返回noresult
             }else {
-                res.send(rows[0].longurl);//查询成功返回longurl
+                res.redirect(rows[0].longurl);//查询成功则重定向
+                //res.send(rows[0].longurl);
             }
         }
     });
