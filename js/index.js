@@ -8,8 +8,7 @@ function shorten(){
             shorturl:""
         }
     }).done(function (data) {
-        console.log(data);
-        $("#short").text(data.shorturl);
+        $("#short").text("http://s.zjuqsc.com/_"+data.shorturl);
         $("#index").hide();
         $("#result").show();
     }).fail(function () {
