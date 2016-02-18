@@ -7,51 +7,67 @@ var connection = mysql.createConnection({
     password : '86.corrode',
     database : 'shorturl'
 });
+connection.connect(function (err) {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected  id:' + connection.threadId);
+});
 
+
+/*test*/
 app.get('/test', function (req, res) {
     console.log("test success");
     res.send("ok");
 });
 
+
+
+/*shorten*/
 app.get('/shorten', function (req, res) {
-    connection.connect(function (err) {
-        if (err) {
-            console.error('error connecting: ' + err.stack);
-            return;
-        }
-        console.log('connected  id:' + connection.threadId);
-    });
+
 
     var longurl = req.query.longurl;
-    console.log(longurl);
-    connection.query("SELECT * FROM url WHERE longurl='" + longurl + "'", function (err, rows) {
-        if (err) {
-            console.log(err.code); // 'ECONNREFUSED'
-            console.log(err.fatal); // true
-            res.send("fail");
-            //connection.query("INSERT INTO url (longurl,shorturl) values('test1','test2')",function(err,rows){
-            //    if(err){
-            //        console.log("insert error");
-            //    }else{
-            //        res.send("inserted!");
-            //    }
-            //});
-        } else {
-            res.send(rows[0].shorturl);
-        }
+    var shorturl=req.query.shorturl;
+    console.log("longurl:"+longurl+"\nshorturl:"+shorturl);
+    if (shorturl == "") {
 
-    });
-    connection.end();
+    }else {
+        connection.query("SELECT * FROM url WHERE longurl='" + longurl + "'", function (err, rows) {
+            if (err) {
+                console.log(err.code);
+                console.log(err.fatal);
+                res.send("fail");
+                return;
+            }
+            console.log("query1 success");
+
+            if (rows.length==0) {
+                var myDate=new Date();
+                var datetime=myDate.toLocaleString( );
+                connection.query("INSERT INTO url (longurl,shorturl,datetime) VALUES ('" + longurl + "','" + shorturl + "','"+datetime+"')", function (err, rows) {
+                    if (err) {
+                        console.log(err.code);
+                        console.log(err.fatal);
+                        res.send("fail");
+                        return;
+                    }
+                    res.send("inserted!");
+                });
+            } else {
+                res.send(rows[0].shorturl);
+            }
+        });
+    }
+
+
+    //connection.end();
 });
 
+
+/*find*/
 app.get('find', function (req, res) {
-    connection.connect(function (err) {
-        if (err) {
-            console.error('error connecting: ' + err.stack);
-            return;
-        }
-        console.log('connected  id:' + connection.threadId);
-    });
 
     var shorturl = req.query.shorturl;
     connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
@@ -60,13 +76,14 @@ app.get('find', function (req, res) {
             console.log(err.fatal);
             res.send("fail");
         } else {
-            res.send(rows.longurl);
+            res.send(rows[0].longurl);
         }
     });
 
-    connection.end();
 });
 
+
+/*启动服务器*/
 var server = app.listen(3000, function () {
     var host = server.address().address;
     var port = server.address().port;
