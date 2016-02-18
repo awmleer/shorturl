@@ -10,6 +10,7 @@ var connection = mysql.createConnection({
 
 app.get('/test', function (req, res) {
     console.log("test success");
+    res.send("ok");
 });
 
 app.get('/shorten', function (req, res) {
@@ -21,14 +22,14 @@ app.get('/shorten', function (req, res) {
         console.log('connected  id:' + connection.threadId);
     });
 
-    var long = req.query.long;
-    console.log(long);
-    connection.query("SELECT * FROM url WHERE long='" + long + "'", function (err, rows) {
+    var longurl = req.query.longurl;
+    console.log(longurl);
+    connection.query("SELECT * FROM url WHERE longurl='" + longurl + "'", function (err, rows) {
         if (err) {
             console.log(err.code); // 'ECONNREFUSED'
             console.log(err.fatal); // true
             res.send("fail");
-            //connection.query("INSERT INTO url (long,short) values('test1','test2')",function(err,rows){
+            //connection.query("INSERT INTO url (longurl,shorturl) values('test1','test2')",function(err,rows){
             //    if(err){
             //        console.log("insert error");
             //    }else{
@@ -36,7 +37,7 @@ app.get('/shorten', function (req, res) {
             //    }
             //});
         } else {
-            res.send("ok");
+            res.send(rows[0].shorturl);
         }
 
     });
@@ -52,14 +53,14 @@ app.get('find', function (req, res) {
         console.log('connected  id:' + connection.threadId);
     });
 
-    var short = req.query.short;
-    connection.query("SELECT * FROM url WHERE short='"+short+"'", function (err, rows) {
+    var shorturl = req.query.shorturl;
+    connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
         if (err) {
             console.log(err.code);
             console.log(err.fatal);
             res.send("fail");
         } else {
-            res.send(rows.long);
+            res.send(rows.longurl);
         }
     });
 
