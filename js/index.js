@@ -8,6 +8,9 @@ function shorten(){
             shorturl:""
         }
     }).done(function (data) {
+        if (data == "repeat") {
+            alert("该短网址已被占用");
+        }
         $("#short").text("http://s.zjuqsc.com/_"+data.shorturl);
         $("#index").hide();
         $("#result").show();

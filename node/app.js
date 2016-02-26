@@ -47,6 +47,7 @@ app.get('/shorten', function (req, res) {
     var shorturl=req.query.shorturl;
     console.log("longurl:"+longurl+"\nshorturl:"+shorturl);
 
+    //定义插入数据的通用函数
     function inserturl(){
         //插入数据
         var myDate=new Date();
@@ -68,25 +69,37 @@ app.get('/shorten', function (req, res) {
         });
     }
 
-
-    //查询该longurl是否已经存在
-    connection.query("SELECT * FROM url WHERE longurl='" + longurl + "'", function (err, rows) {
-        if (err) {
-            console.log(err.code);
-            console.log(err.fatal);
-            res.send("fail");
-            return;
-        }
-        //如果存在则直接返回对应的行，并且更新时间戳
-        if (rows.length != 0) {
-            res.send(rows[0]);
-            //todo 更新时间戳
-            return;
-        }
-
-        //如果不存在再去判断shorturl是否为空
-        if (shorturl == "") {
-            //如果用户传入的shorturl为空则随机生成一个
+    if (shorturl != "") {
+        //如果用户传入的shorturl不为空则检查是否重复
+        connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
+            if (err) {
+                console.log(err.code);
+                console.log(err.fatal);
+                res.send("fail");
+                return;
+            }
+            if (rows.length == 0) {
+                inserturl();
+            }else{
+                res.send("repeat");
+            }
+        });
+    }else{//如果shorturl为空
+        //查询该longurl是否已经存在
+        connection.query("SELECT * FROM url WHERE longurl='" + longurl + "'", function (err, rows) {
+            if (err) {
+                console.log(err.code);
+                console.log(err.fatal);
+                res.send("fail");
+                return;
+            }
+            //如果存在则直接返回对应的行，并且更新时间戳
+            if (rows.length != 0) {
+                res.send(rows[0]);
+                //todo 更新时间戳
+                return;
+            }
+            //如果不存在，由于shorturl 为空，所以直接随机生成一个
             var string;
             function generate() {
                 string = randomstr(5);
@@ -99,7 +112,7 @@ app.get('/shorten', function (req, res) {
                         return;
                     }
                     if (rows.length == 0) {
-                        shorturl=string;
+                        shorturl = string;
                         inserturl();
                     } else {
                         console.log("repeat!!!");
@@ -107,25 +120,10 @@ app.get('/shorten', function (req, res) {
                     }
                 });
             }
-            generate();
-        }else{
-            //如果用户传入的shorturl不为空则检查是否重复
-            connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
-                if (err) {
-                    console.log(err.code);
-                    console.log(err.fatal);
-                    res.send("fail");
-                    return;
-                }
-                if (rows.length == 0) {
-                    inserturl();
-                }else{
-                    res.send("repeat");
-                }
-            });
-        }
+            generate();//递归调用
+        });
+    }
 
-    });
 
 });
 
