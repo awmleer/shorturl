@@ -17,7 +17,7 @@ function shorten(){
         type: "post",
         data: {
             longurl: longurl,
-            shorturl:$("#short-set").val();
+            shorturl:$("#short-set").val()
         }
     }).done(function (data) {
         if (data == "repeat") {
