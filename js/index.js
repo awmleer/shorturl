@@ -22,3 +22,14 @@ function shorten(){
 function copy(){
 
 }
+
+
+function add(){
+    var strhtml='<div><input type="text" class="form-control" title="long" style="display: inline;width: 85%;">&nbsp;<button onclick="remove($(this))" class="btn btn-danger" style="width: 3em;">-</button></div>';
+    $("#long").append(strhtml);
+}
+
+function remove(obj){
+    console.log(obj.parent());
+    obj.parent().remove();
+}

@@ -30,11 +30,18 @@
 
             <div class="wrap">
                 <div class="inner">
-                    <h1 class="text-center">求是潮ShortURL</h1>
+                    <h1 class="text-center" style="margin: 1em 2em;">求是潮ShortURL</h1>
                     <div id="index">
-                        <div class="form-group">
+                        <div id="long" class="form-group">
                             <label>请输入要缩短的网址：</label>
-                            <input id="long" type="text" class="form-control" title="long">
+                            <div>
+                                <input type="text" class="form-control" title="long" style="display: inline;width: 85%;">
+                                <button onclick="add()" class="btn btn-success" style="width: 3em;">+</button>
+                            </div>
+                            <!--<div>-->
+                                <!--<input type="text" class="form-control" title="long" style="display: inline;width: 85%;">-->
+                                <!--<button onclick="remove($(this))" class="btn btn-danger" style="width: 3em;">-</button>-->
+                            <!--</div>-->
                         </div>
                         <button onclick="shorten()" class="btn btn-primary">缩短</button>
                     </div>
