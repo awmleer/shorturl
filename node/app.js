@@ -1,8 +1,19 @@
 var express = require('express');
 var mysql      = require('mysql');
-cors = require('cors');
 var app = express();
+
+//引入async
+var async=require('async');
+
+//解决跨域问题
+cors = require('cors');
 app.use(cors());
+
+//引入body-parser
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 var connection = mysql.createConnection({
     host     : '121.42.209.162',
     user     : 'root',//TODO 貌似这里不能是root啊。。
@@ -40,10 +51,10 @@ app.get('/test', function (req, res) {
 
 
 /*shorten*/
-app.get('/shorten', function (req, res) {
+app.post('/shorten', function (req, res) {
 
-    var longurl = req.query.longurl;
-    var shorturl=req.query.shorturl;
+    var longurl = req.body.longurl;
+    var shorturl=req.body.shorturl;
     console.log("longurl:"+longurl+"\nshorturl:"+shorturl);
 
     //定义插入数据的通用函数
@@ -127,9 +138,18 @@ app.get('/shorten', function (req, res) {
 });
 
 
-/*下划线开头的进行解析并重定向*/
+/*下划线开头的进行重定向*/
 app.get('/_*', function (req, res) {
     var shorturl = req.path.substr(2);
+    res.redirect("http://localhost:63342/shorturl/jump.html?"+shorturl);//TODO url更改
+});
+
+
+
+/*resume*/
+app.get('/resume', function (req, res) {
+    var shorturl = req.query.shorturl;
+    console.log(shorturl);
     connection.query("SELECT * FROM url WHERE shorturl='"+shorturl+"'", function (err, rows) {
         if (err) {
             console.log(err.code);
@@ -139,7 +159,8 @@ app.get('/_*', function (req, res) {
             if (rows.length == 0) {
                 res.send("noresult");//查不到结果返回noresult
             }else {
-                res.redirect(rows[0].longurl);//查询成功则重定向
+                //查询成功则返回longurl
+                res.send(rows[0].longurl);
             }
         }
     });

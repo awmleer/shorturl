@@ -5,7 +5,7 @@ function shorten(){
     $(".item").each(function(){
         item=$(this).val();
         if (item == "") flag=false;
-        longurl = longurl + item + "\n";
+        longurl = longurl + item + "|||||";
     });
     if (flag == false) {
         alert("请输入网址");
