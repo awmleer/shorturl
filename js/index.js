@@ -1,16 +1,23 @@
 function shorten(){
     var longurl="";
+    var item="";
+    var flag=true;
     $(".item").each(function(){
-        longurl = longurl + $(this).val() + "\n";
+        item=$(this).val();
+        if (item == "") flag=false;
+        longurl = longurl + item + "\n";
     });
-    console.log(longurl);
+    if (flag == false) {
+        alert("请输入网址");
+        return;
+    }
     //调用API shorten
     $.ajax({
         url: "http://localhost:3000/shorten",
         type: "post",
         data: {
             longurl: longurl,
-            shorturl:""
+            shorturl:$("#short-set").val();
         }
     }).done(function (data) {
         if (data == "repeat") {
