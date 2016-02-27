@@ -1,10 +1,15 @@
 function shorten(){
-    //调用shorten方法
+    var longurl="";
+    $(".item").each(function(){
+        longurl = longurl + $(this).val() + "\n";
+    });
+    console.log(longurl);
+    //调用API shorten
     $.ajax({
         url: "http://localhost:3000/shorten",
-        type: "get",
+        type: "post",
         data: {
-            longurl: $("#long").val(),
+            longurl: longurl,
             shorturl:""
         }
     }).done(function (data) {
@@ -25,7 +30,7 @@ function copy(){
 
 
 function add(){
-    var strhtml='<div><input type="text" class="form-control" title="long" style="display: inline;width: 85%;">&nbsp;<button onclick="remove($(this))" class="btn btn-danger" style="width: 3em;">-</button></div>';
+    var strhtml='<div><input type="text" class="form-control item" title="long" style="display: inline;width: 85%;">&nbsp;<button onclick="remove($(this))" class="btn btn-danger" style="width: 3em;">-</button></div>';
     $("#long").append(strhtml);
 }
 

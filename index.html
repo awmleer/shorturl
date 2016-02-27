@@ -35,7 +35,7 @@
                         <div id="long" class="form-group">
                             <label>请输入要缩短的网址：</label>
                             <div>
-                                <input type="text" class="form-control" title="long" style="display: inline;width: 85%;">
+                                <input type="text" class="form-control item" title="long" style="display: inline;width: 85%;">
                                 <button onclick="add()" class="btn btn-success" style="width: 3em;">+</button>
                             </div>
                             <!--<div>-->
@@ -46,7 +46,7 @@
                         <button onclick="shorten()" class="btn btn-primary">缩短</button>
                     </div>
 
-                    <div id="result">
+                    <div id="result" style="display: none;">
                         <h3>短网址已生成：</h3>
                         <p id="short"></p>
                         <button onclick="copy()" class="btn btn-primary">点我复制</button>

@@ -127,7 +127,6 @@ app.get('/shorten', function (req, res) {
 });
 
 
-//TODO 数据库的改动，添加一个表
 /*下划线开头的进行解析并重定向*/
 app.get('/_*', function (req, res) {
     var shorturl = req.path.substr(2);
