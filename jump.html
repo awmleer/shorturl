@@ -7,6 +7,18 @@
 </head>
 <body>
 <script>
+    //定义打开新标签页的函数
+    function newtab(url) {
+            //var a = $('a')[0];
+            var a = $("<a href='"+url+"' target='_blank'>Apple</a>").get(0);
+
+            var e = document.createEvent('MouseEvents');
+
+            e.initEvent('click', true, true);
+            a.dispatchEvent(e);
+            console.log('event has been changed');
+    }
+
     $(document).ready(function () {
         $.ajax({
             url: "http://localhost:3000/resume",
@@ -17,6 +29,10 @@
         }).done(function (data) {
             var urls=data.split("|||||");
             console.log(urls);
+            for (var i = 0; i < urls.length -2; i++) {
+                newtab(urls[i]);
+            }
+            window.location.href=urls[urls.length-2];//最后一个url（即数组中的倒数第二个元素）显示在本标签页
         }).fail(function () {
             alert("获取信息失败，请稍后再试");
         });
