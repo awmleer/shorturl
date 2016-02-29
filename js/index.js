@@ -23,7 +23,7 @@ function shorten(){
         if (data == "repeat") {
             alert("该短网址已被占用");
         }
-        $("#short").text("http://shorturl.dev.zjuqsc.com:3000/_"+data.shorturl);
+        $("#short").text("http://10.79.25.129:3000/_"+data.shorturl);
         $("#index").hide();
         $("#result").show();
     }).fail(function () {

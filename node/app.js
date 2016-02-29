@@ -1,7 +1,3 @@
-var fs = require('fs');//文件读写
-var privateKey  = fs.readFileSync('sslcert/server.key', 'utf8');
-var certificate = fs.readFileSync('sslcert/server.crt', 'utf8');
-var credentials = {key: privateKey, cert: certificate};//读取密钥
 var express = require('express');
 var mysql      = require('mysql');
 var app = express();
@@ -144,7 +140,7 @@ app.post('/shorten', function (req, res) {
 /*下划线开头的进行重定向*/
 app.get('/_*', function (req, res) {
     var shorturl = req.path.substr(2);
-    res.redirect("https://10.79.25.129/shorturl/jump.html?"+shorturl);//TODO url更改
+    res.redirect("http://10.79.25.129/jump.html?"+shorturl);//TODO url更改
 });
 
 
@@ -172,11 +168,9 @@ app.get('/resume', function (req, res) {
 
 
 /*启动服务器*/
-var httpsServer = https.createServer(credentials, app);
-httpsServer.listen(3000);
-//var server = app.listen(3000, function () {
-//    var host = server.address().address;
-//    var port = server.address().port;
-//
-//    console.log('Listening at http://%s:%s', host, port);
-//});
+var server = app.listen(3000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Listening at http://%s:%s', host, port);
+});
