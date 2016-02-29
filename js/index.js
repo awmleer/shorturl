@@ -31,10 +31,20 @@ function shorten(){
     });
 }
 
-function copy(){
+function copyurl(){
 
 }
 
+function openurl(){
+    var url=$("#short").text();
+    var a = $("<a href='"+url+"' target='_blank'>test</a>").get(0);
+
+    var e = document.createEvent('MouseEvents');
+
+    e.initEvent('click', true, true);
+    a.dispatchEvent(e);
+    console.log('event has been changed');
+}
 
 function add(){
     var strhtml='<div><input type="text" class="form-control item" title="long" style="display: inline;width: 85%;">&nbsp;<button onclick="remove($(this))" class="btn btn-danger" style="width: 3em;">-</button></div>';
