@@ -13,7 +13,7 @@ function shorten(){
     }
     //调用API shorten
     $.ajax({
-        url: "http://localhost:3000/shorten",
+        url: "http://10.79.25.129:3000/shorten",
         type: "post",
         data: {
             longurl: longurl,
@@ -23,7 +23,7 @@ function shorten(){
         if (data == "repeat") {
             alert("该短网址已被占用");
         }
-        $("#short").text("http://s.zjuqsc.com/_"+data.shorturl);
+        $("#short").text("http://shorturl.dev.zjuqsc.com:3000/_"+data.shorturl);
         $("#index").hide();
         $("#result").show();
     }).fail(function () {
