@@ -1,3 +1,18 @@
+$(document).ready(function () {
+    //初始化clipboard模块
+    var clipboard = new Clipboard('#copyurl');
+
+    clipboard.on('success', function(e) {
+        alert("复制成功");
+    });
+
+    clipboard.on('error', function(e) {
+        alert("复制失败");
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    });
+});
+
 function shorten(){
     var longurl="";
     var item="";
@@ -31,9 +46,6 @@ function shorten(){
     });
 }
 
-function copyurl(){
-
-}
 
 function openurl(){
     var url=$("#short").text();

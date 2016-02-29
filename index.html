@@ -8,6 +8,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!--<script src="js/angular.min.js"></script>-->
 
+    <script src="js/clipboard.min.js"></script>
 
     <link href="css/ui.css" rel="stylesheet">
     <title>shorturl</title>
@@ -33,7 +34,7 @@
                     <h1 class="text-center" style="margin: 1em 2em;">求是潮ShortURL</h1>
                     <div id="index">
                         <div id="long" class="form-group">
-                            <label>请输入要缩短的网址：</label>
+                            <label>请输入要缩短的网址：（可以是多个）</label>
                             <div>
                                 <input type="text" class="form-control item" title="long" style="display: inline;width: 85%;">
                                 <button onclick="add()" class="btn btn-success" style="width: 3em;">+</button>
@@ -53,7 +54,7 @@
                     <div id="result" style="display: none;">
                         <h3>短网址已生成：</h3>
                         <p id="short"></p>
-                        <button onclick="copyurl()" class="btn btn-primary">点我复制</button>
+                        <button id="copyurl"  data-clipboard-target="#short" class="btn btn-primary">点我复制</button>
                         <button onclick="openurl()" class="btn btn-primary">直接打开</button>
                     </div>
 
