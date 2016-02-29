@@ -19,7 +19,13 @@ function shorten(){
     var flag=true;
     $(".item").each(function(){
         item=$(this).val();
-        if (item == "") flag=false;
+        if (item == "") {
+            flag=false;
+            return;
+        }
+        if (item.substr(0, 4)!="http") {
+            item="http://"+item;
+        }
         longurl = longurl + item + "|||||";
     });
     if (flag == false) {
